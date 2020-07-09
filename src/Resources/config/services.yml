@@ -1,0 +1,28 @@
+services:
+    Synoa\Bundle\DataObjectSortIndexBundle\Service\Connection:
+        arguments:
+            - '@doctrine.dbal.default_connection'
+
+    Synoa\Bundle\DataObjectSortIndexBundle\Service\AlphabeticSorter:
+        arguments:
+            - '@doctrine.dbal.default_connection'
+        tags:
+            - { name: synoa.data_object_sort_index.sorter, type: alphabetic }
+
+    Synoa\Bundle\DataObjectSortIndexBundle\EventListener\SortListener:
+        arguments:
+            - '%synoa.data_object_sort_index.config%'
+            - '@Synoa\Bundle\DataObjectSortIndexBundle\Service\Connection'
+        tags:
+            - { name: kernel.event_subscriber }
+
+    Synoa\Bundle\DataObjectSortIndexBundle\Maintenance\SortMaintenance:
+        arguments:
+            - '@Synoa\Bundle\DataObjectSortIndexBundle\Service\Connection'
+            - !tagged_locator { tag: synoa.data_object_sort_index.sorter, index_by: type }
+
+    Synoa\Bundle\DataObjectSortIndexBundle\Command\SortCommand:
+        arguments:
+            - '@Synoa\Bundle\DataObjectSortIndexBundle\Maintenance\SortMaintenance'
+        tags:
+            - { name: console.command, command: synoa:data_object_sort_index:sort }

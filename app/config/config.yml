@@ -1,0 +1,18 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: system.yml }
+    - { resource: 'local/' }
+
+framework:
+    profiler:
+        enabled: false
+
+data_object_sort_index:
+    sort_index:
+        categories:
+            folder: /categories
+            object_class: Category
+            data_object_field: sorting
+            type: alphabetic

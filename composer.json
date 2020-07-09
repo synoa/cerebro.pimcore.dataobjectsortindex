@@ -1,0 +1,42 @@
+{
+    "name": "synoa/apidataobjectsort",
+    "type": "pimcore-bundle",
+    "description": "",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Dominik Pfaffenbauer",
+            "email": "dominik@pfaffenbauer.at",
+            "homepage": "https://www.pfaffenbauer.at/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "pimcore/pimcore": "^5.7.0||^6.0.0"
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "Synoa\\Bundle\\DataObjectSortIndexBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "app/AppKernel.php"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0-dev"
+        },
+        "pimcore": {
+            "bundles": [
+                "Synoa\\Bundle\\DataObjectSortIndexBundle\\DataObjectSortIndexBundle"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
