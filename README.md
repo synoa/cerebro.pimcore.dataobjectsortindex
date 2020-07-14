@@ -46,8 +46,8 @@ data_object_sort_index:
     sort_index:
         products:
             folder: /full/path/to/the/parent-object
-            object_class: product
-            data_object_field: sorting
+            object_class: <type of the object that should be sorted, e.g. product or category>
+            data_object_field: <name of the field that should be used to save the sorting></name>
             type: alphabetic
 ```
 
@@ -57,8 +57,7 @@ In Pimcore you have a structure like this:
 
 ![Pimcore Objects that should be sorted](docs/images/pimcore_objects_to_sort.png)
 
-Now you want that all sub-objects of `/Products/Website2 (pimadofashion)/Store1 (pimado fashion euro)/Shoes` are sorted, 
-so you can configure it like this: 
+Now you want that all sub-objects in `/Products/Website2 (pimadofashion)/Store1 (pimado fashion euro)/Shoes` with the type `product` are sorted using the field `sorting` to store the value: 
 
 ```yaml
 data_object_sort_index:
