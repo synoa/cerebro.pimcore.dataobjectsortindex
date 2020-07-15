@@ -20,6 +20,8 @@ services:
         arguments:
             - '@Synoa\Bundle\DataObjectSortIndexBundle\Service\Connection'
             - !tagged_locator { tag: synoa.data_object_sort_index.sorter, index_by: type }
+        tags:
+            - { name: pimcore.maintenance.task, type: data_object_sort_index }
 
     Synoa\Bundle\DataObjectSortIndexBundle\Command\SortCommand:
         arguments:
