@@ -8,6 +8,12 @@
   - [Configuration](#configuration)
     - [Example](#example)
 - [Usage](#usage)
+  - [Manual](#manual)
+- [FAQ](#faq)
+  - [Why is the sorting is not updated?](#why-is-the-sorting-is-not-updated)
+    - [Did you change the `o_key`?](#did-you-change-the-o_key)
+    - [Did you refresh the object?](#did-you-refresh-the-object)
+    - [Is the `pimcore:maintenance` actually running?](#is-the-pimcoremaintenance-actually-running)
 
 ---
 
@@ -57,7 +63,7 @@ In Pimcore you have a structure like this:
 
 ![Pimcore Objects that should be sorted](docs/images/pimcore_objects_to_sort.png)
 
-Now you want that all sub-objects in `/Products/Website2 (pimadofashion)/Store1 (pimado fashion euro)/Shoes` with the type `product` are sorted using the field `sorting` to store the value: 
+Now you want that all sub-objects in `/Products/Website2 (pimadofashion)/Store1 (pimado fashion euro)/Shoes` with the type `product` are sorted by their name (`o_key` in Pimcore, not the actual field `Name` of the Object) using the field `sorting` to store the value: 
 
 ```yaml
 data_object_sort_index:
@@ -74,4 +80,38 @@ data_object_sort_index:
 
 # Usage
 
-After the different paths are added via the config, the sorting happens automatially when the pimcore:maintenance job (usually triggered via the default Pimcore cron) es executed, which means that you should see your result after ~ 5 minutes. 
+After the different paths are added via the config, the sorting happens automatially when the `pimcore:maintenance` job (usually triggered via the default Pimcore cron) is executed, which means that you should see your result after ~ 5 minutes. 
+
+## Manual
+
+You can also trigger the sorting manually: `bin/console synoa:data_object_sort_index:sort`
+
+
+---
+
+# FAQ
+
+## Why is the sorting is not updated?
+
+### Did you change the `o_key`? 
+
+This is the name of the object in the list, NOT the field `Name` of the object when you edit the object.
+
+You can change the `o_key` with right click on the object and in the context menu choose `rename`.
+
+### Did you refresh the object? 
+
+As when you had the object open before, refreshing the object-tree doesn't refresh the indiviual object
+
+![Sorting is not updated because you have to refresh the object](docs/images/pimcore_objects_refresh_object.jpg)
+
+
+### Is the `pimcore:maintenance` actually running?
+
+Go onto the server and open the list of cronjobs with `crontab -l` and see if this is added:
+
+```
+*/5 * * * * ~/pimcore/current/bin/console pimcore:maintenance
+```
+
+If not then it needs to be added. 
