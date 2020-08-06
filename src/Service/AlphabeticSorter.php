@@ -2,6 +2,7 @@
 
 namespace Synoa\Bundle\DataObjectSortIndexBundle\Service;
 
+use Pimcore\Model\DataObject;
 use Pimcore\Model\DataObject\Concrete;
 use Pimcore\Model\DataObject\Folder;
 
@@ -15,7 +16,7 @@ class AlphabeticSorter implements SorterInterface
     }
 
 
-    public function sortFolder(Folder $folder, array $config)
+    public function sortFolder(DataObject $folder, array $config)
     {
         $queryBuilder = $this->connection->createQueryBuilder();
 

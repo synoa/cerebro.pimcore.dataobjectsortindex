@@ -42,6 +42,10 @@ class SortListener implements EventSubscriberInterface
             if ($object->getParent()->getFullPath() === $config['folder']) {
                 $this->connection->send($object->getParentId(), $config);
             }
+
+            if ($config['recursive'] && stripos($object->getParent()->getFullPath(), $config['folder']) !== false) {
+                $this->connection->send($object->getParentId(), $config);
+            }
         }
     }
 }
