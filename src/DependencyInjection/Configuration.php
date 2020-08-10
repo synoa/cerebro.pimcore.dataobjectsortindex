@@ -23,6 +23,7 @@ class Configuration implements ConfigurationInterface
                             ->scalarNode('folder')->isRequired()->end()
                             ->scalarNode('object_class')->isRequired()->end()
                             ->scalarNode('data_object_field')->isRequired()->end()
+                            ->booleanNode('recursive')->defaultValue(false)->end()
                             ->enumNode('type')
                                 ->values(['alphabetic'])
                             ->end()
