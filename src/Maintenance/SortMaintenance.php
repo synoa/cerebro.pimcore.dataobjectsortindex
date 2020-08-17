@@ -18,7 +18,6 @@ class SortMaintenance implements TaskInterface
         $this->locator = $locator;
     }
 
-
     public function execute()
     {
         $foldersToSort = $this->connection->get();

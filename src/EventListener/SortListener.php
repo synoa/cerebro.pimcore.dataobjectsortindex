@@ -34,18 +34,34 @@ class SortListener implements EventSubscriberInterface
             return;
         }
 
+        $sendConfig = null;
+
         foreach ($this->configMap as $name => $config) {
             if ($config['object_class'] !== $object->getClassName()) {
                 continue;
             }
 
             if ($object->getParent()->getFullPath() === $config['folder']) {
-                $this->connection->send($object->getParentId(), $config);
+                if (null !== $sendConfig && strlen($sendConfig['folder']) > strlen($config['folder'])) {
+                    //Already registerted folder is more specific thus has more priority (sub-folder)
+                    continue;
+                }
+
+                $sendConfig = $config;
             }
 
             if ($config['recursive'] && stripos($object->getParent()->getFullPath(), $config['folder']) !== false) {
-                $this->connection->send($object->getParentId(), $config);
+                if (null !== $sendConfig && strlen($sendConfig['folder']) > strlen($config['folder'])) {
+                    //Already registerted folder is more specific thus has more priority (sub-folder)
+                    continue;
+                }
+
+                $sendConfig = $config;
             }
+        }
+
+        if (null !== $sendConfig) {
+            $this->connection->send($object->getParentId(), $sendConfig);
         }
     }
 }

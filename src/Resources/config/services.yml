@@ -9,6 +9,10 @@ services:
         tags:
             - { name: synoa.data_object_sort_index.sorter, type: alphabetic }
 
+    Synoa\Bundle\DataObjectSortIndexBundle\Service\ManualSorter:
+        tags:
+            - { name: synoa.data_object_sort_index.sorter, type: manual }
+
     Synoa\Bundle\DataObjectSortIndexBundle\EventListener\SortListener:
         arguments:
             - '%synoa.data_object_sort_index.config%'
