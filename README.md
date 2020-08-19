@@ -1,6 +1,6 @@
-<h1>Index Sort Bundle</h1>
+<h1>cerebro.pimcore.dataobjectsortindex</h1>
 
-> Update the "sorting" attribute for children of objects that are sortet "alphabetical"
+> Update the "sorting" attribute for children of objects that are sorted "alphabetical"
 
 > Manual sorting is not covered by this extension, you have to do this yourself!
 
@@ -44,7 +44,7 @@ Install with composer:
 ```
 # Install module
 composer config repositories.synoa_dataobjectsortindex git https://github.com/synoa/cerebro.pimcore.dataobjectsortindex.git
-COMPOSER_MEMORY_LIMIT=-1 composer require synoa/apidataobjectsort
+COMPOSER_MEMORY_LIMIT=-1 composer require synoa/dataobjectsortindex
 
 # Enable the extension and add the updated var/config/extensions.php into the repo
 bin/console pimcore:bundle:enable DataObjectSortIndexBundle
@@ -54,7 +54,7 @@ bin/console pimcore:bundle:enable DataObjectSortIndexBundle
 ## Uninstall
 
 ```
-COMPOSER_MEMORY_LIMIT=-1 composer remove synoa/apidataobjectsort
+COMPOSER_MEMORY_LIMIT=-1 composer remove synoa/dataobjectsortindex
 composer config unset repositories.synoa_dataobjectsortindex
 ```
 

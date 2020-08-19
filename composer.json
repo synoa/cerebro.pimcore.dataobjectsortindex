@@ -1,8 +1,9 @@
 {
-    "name": "synoa/apidataobjectsort",
+    "name": "synoa/dataobjectsortindex",
     "type": "pimcore-bundle",
-    "description": "",
+    "description": "Update the 'sorting' attribute for children of objects that are sorted 'alphabetical'",
     "license": "proprietary",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Dominik Pfaffenbauer",
@@ -12,7 +13,7 @@
         }
     ],
     "require": {
-        "pimcore/pimcore": "^5.7.0||^6.0.0"
+        "pimcore/pimcore": "^6.3.0"
     },
     "require-dev": {
 
@@ -28,15 +29,11 @@
         ]
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        },
         "pimcore": {
             "bundles": [
                 "Synoa\\Bundle\\DataObjectSortIndexBundle\\DataObjectSortIndexBundle"
             ]
         }
     },
-    "minimum-stability": "dev",
     "prefer-stable": true
 }

@@ -14,6 +14,6 @@ class DataObjectSortIndexBundle extends AbstractPimcoreBundle
      */
     protected function getComposerPackageName(): string
     {
-        return 'synoa/apidataobjectsort';
+        return 'synoa/dataobjectsortindex';
     }
 }
