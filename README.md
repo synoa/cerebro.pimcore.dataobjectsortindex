@@ -16,6 +16,7 @@
   - [Alphabetical Sorting](#alphabetical-sorting)
     - [CLI](#cli)
   - [Manual Sorting](#manual-sorting)
+    - [Manual sorting as a child of an object that has alphabetical sorting](#manual-sorting-as-a-child-of-an-object-that-has-alphabetical-sorting)
 - [FAQ](#faq)
   - [Why is the sorting not updated?](#why-is-the-sorting-not-updated)
     - [Is the sorting type set to `Aplphabetical sorting` in the Pimcore backend?](#is-the-sorting-type-set-to-aplphabetical-sorting-in-the-pimcore-backend)
@@ -162,12 +163,35 @@ You can also trigger the sorting manually: `bin/console synoa:data_object_sort_i
 
 ## Manual Sorting
 
-If you want to sort your objects manually, you have to do some things:
+If you want to sort your objects manually, you have to do some things yourself:
 
 * Don't add your folder to the configuration-file as written above! This is ONLY for folders that use alphabetical sorting!
 * Right click on the object that you want to sort manually and select `Sort children by > Index (Ordered by Manually)`
 * Order your objects manually
 * Update the `sorting` attribute yourself every time the objects are sorted
+
+### Manual sorting as a child of an object that has alphabetical sorting
+
+If you specify a parent object to have alphabetical sorting and then want a specific child to be manually sorted, you have to add something to the config:
+
+```yaml
+data_object_sort_index:
+    sort_index:
+        categories:
+            folder: /Shops/Website1 (konekti showcase)/Store1 (konekti showcase store)/Smart Home
+            object_class: category
+            data_object_field: sorting
+            type: alphabetic
+            recursive: true
+
+        categories_manual:
+            folder: /Shops/Website1 (konekti showcase)/Store1 (konekti showcase store)/Smart Home/Funktechnik
+            object_class: category
+            data_object_field: sorting
+            type: manual
+```
+
+*Note:* Even when there is a type `manual` it has no effect, it's just important that the `type` is not `alphabetic`! It just is there so you know that the sorting has to be done by the user and that this config is not alphabetically. 
 
 
 ---
