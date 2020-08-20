@@ -113,17 +113,18 @@ If you want to have multiple folders sorted, you can add them like this:
 ```yaml
 data_object_sort_index:
     sort_index:
-        products:
-          - folder: /Products/Website2 (pimadofashion)/Store1 (pimado fashion euro)/Shoes
-            object_class: product
-            data_object_field: sorting
-            type: alphabetic
-            recursive: true
-          - folder: /Products/Website2 (pimadofashion)/Store1 (pimado fashion euro)/Shirts
-            object_class: product
-            data_object_field: sorting
-            type: alphabetic
-            recursive: true
+        shoes:
+          folder: /Products/Website2 (pimadofashion)/Store1 (pimado fashion euro)/Shoes
+          object_class: product
+          data_object_field: sorting
+          type: alphabetic
+          recursive: true
+        shirts:
+          folder: /Products/Website2 (pimadofashion)/Store1 (pimado fashion euro)/Shirts
+          object_class: product
+          data_object_field: sorting
+          type: alphabetic
+          recursive: true
 
 ```
 
