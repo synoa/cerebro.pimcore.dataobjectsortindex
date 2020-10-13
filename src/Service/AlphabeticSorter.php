@@ -23,7 +23,7 @@ class AlphabeticSorter implements SorterInterface
             ->from('objects')
             ->where('o_parentId = :parentId')
             ->andWhere('o_className = :className')
-            ->orderBy('o_key', 'ASC')
+            ->orderBy('LOWER(o_key)', 'ASC')
             ->setParameter('parentId', $folder->getId())
             ->setParameter('className', $config['object_class']);
 
