@@ -3,7 +3,7 @@
     "type": "pimcore-bundle",
     "description": "Update the 'sorting' attribute for children of objects that are sorted 'alphabetical'",
     "license": "proprietary",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "authors": [
         {
             "name": "Dominik Pfaffenbauer",
